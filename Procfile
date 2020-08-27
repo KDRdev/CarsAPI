@@ -1,1 +1,1 @@
-web: gunicorn manage.py runserver
+web: gunicorn cars_api.wsgi:application

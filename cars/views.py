@@ -6,6 +6,13 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Car, Rating
 
+def index(request):
+    return HttpResponse(
+        "Welcome to the Cars API.\
+        For viewing cars, go to /cars.\
+        To add a rating, use /rate endpoint and pass it 'car_id' and 'rating' values.\
+        For viewing popular cars, go to /popular.")
+
 @csrf_exempt
 def cars(request):
     if request.method == 'GET':
@@ -35,6 +42,9 @@ def popular(request):
 
 @csrf_exempt
 def rate(request):
+    if request.method == 'GET':
+        return HttpResponse('Oops. It looks like you used GET request.\
+            You need to pass "car_id" and "rating" in a POST request here.')
     if request.method == 'POST':
         r_data = json.loads(request.body)
         car_id = r_data['car_id']
