@@ -147,8 +147,4 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
-# Migrations
-
-/cars/migrations
-
 # End of https://www.toptal.com/developers/gitignore/api/django
